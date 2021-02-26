@@ -1,10 +1,9 @@
-import json
-
 import cv2.cv2 as cv2
 import numpy as np
 import pyautogui
 import requests
 import rgbxy
+import json
 import time
 
 CONFIG = json.loads(open("config.json", "r").read())
@@ -15,6 +14,15 @@ baseURL = f"http://{adress}/api/{username}/"
 lURL = f"{baseURL}lights/"
 
 sync_lamps = CONFIG["lamps"]
+
+
+def add_lamps_in_room(room: str):
+    for lamp in requests.get(f"{baseURL}groups/{room}/").json()["lights"]:
+        sync_lamps.append(lamp)
+
+
+for group in CONFIG["groups"]:
+    add_lamps_in_room(group)
 
 
 def set_all_xyb(x, y, bri, transtime=0) -> list[requests.models.Response]:
@@ -56,7 +64,6 @@ def main():
             # Get Values
             r, g, b = get_main_color_on_screen()
             x, y = rgbxy.Converter().rgb_to_xy(r, g, b)
-            print(x, y)
             bri = min(CONFIG["maxbri"], int(abs(100 - (r + g + b))))
 
             set_all_xyb(x, y, bri, transtime=CONFIG["transitiontime"])
