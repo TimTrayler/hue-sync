@@ -7,12 +7,20 @@ import json
 import time
 import os
 
+
+def get_bridge_ip(number=0):
+    return requests.get("https://discovery.meethue.com/").json()[number]["internalipaddress"]
+
+
 if os.path.isfile("testconfig.json"):
     CONFIG = json.loads(open("testconfig.json", "r").read())
 else:
     CONFIG = json.loads(open("config.json", "r").read())
 
-adress = CONFIG["adress"]
+if CONFIG["adress"].lower() == "auto":
+    adress = get_bridge_ip()
+else:
+    adress = CONFIG["adress"]
 username = CONFIG["user"]
 baseURL = f"http://{adress}/api/{username}/"
 lURL = f"{baseURL}lights/"
