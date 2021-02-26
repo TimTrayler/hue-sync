@@ -1,0 +1,12 @@
+{
+  "adress": "[IP-Adress of your bridge]",
+  "user": "XXXXXX-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "lamps": [
+    "1",
+    "2",
+    "3"
+  ],
+  "updatespermillisecond": 1000,
+  "maxbri": 90,
+  "transitiontime": 5
+}
