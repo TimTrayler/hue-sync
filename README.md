@@ -7,7 +7,7 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 # WIP
 - Support for rooms or groups
 
-#How to setup?
+# How to setup?
 1. [Follow these instructions](https://developers.meethue.com/develop/get-started-2/)
 2. Open ```src/config.json```
 3. Set ```adress``` to the IP Adress of your Hue Bridge
