@@ -18,7 +18,7 @@ else:
     CONFIG = json.loads(open("config.json", "r").read())
 
 if CONFIG["adress"].lower() == "auto":
-    adress = get_bridge_ip()
+    adress = get_bridge_ip(CONFIG["bridge_number"])
 else:
     adress = CONFIG["adress"]
 username = CONFIG["user"]

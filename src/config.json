@@ -1,5 +1,6 @@
 {
   "adress": "[IP-Adress of your bridge or auto to automatically get the IP]",
+  "bridge_number":  0,
   "user": "XXXXXX-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
   "lamps": [
     "1",
