@@ -5,7 +5,11 @@
 Hue Sync takes a screenshot of your desktop every few seconds, gets the main color and changes the color of your lights!
 
 # WIP
-- Support for rooms or groups
+
+
+## Latest Feature
+- Support for groups and zones
+
 
 # How to setup?
 1. [Follow these instructions](https://developers.meethue.com/develop/get-started-2/)
