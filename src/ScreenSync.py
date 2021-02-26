@@ -5,8 +5,12 @@ import requests
 import rgbxy
 import json
 import time
+import os
 
-CONFIG = json.loads(open("config.json", "r").read())
+if os.path.isfile("testconfig.json"):
+    CONFIG = json.loads(open("testconfig.json", "r").read())
+else:
+    CONFIG = json.loads(open("config.json", "r").read())
 
 adress = CONFIG["adress"]
 username = CONFIG["user"]
