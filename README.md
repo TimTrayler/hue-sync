@@ -1,7 +1,7 @@
 # Hue Sync
 ## Sync your media with your Hue lights WITHOUT a Hue Sync Box!
 
-# [Download]()
+# [Download](releases/tag/v2.0)
 
 # How does it work?
 Hue Sync takes a screenshot of your desktop every few seconds, gets the main color and changes the color of your lights!
