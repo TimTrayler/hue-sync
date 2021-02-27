@@ -5,8 +5,7 @@
 Hue Sync takes a screenshot of your desktop every few seconds, gets the main color and changes the color of your lights!
 
 # WIP
-- tkinter-menu
-- Executable File (.exe)
+- Better tkinter-menu
 
 ## Latest Features
 - Support for groups and zones
@@ -26,6 +25,12 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 5. Set ```user``` to your credentials
 6. Add the lamp ids to ```lamps```
 7. Change the additional settings like ```updatespermilliseconds``` to improve performance, make it smoother or something.
-8. Start the script, watch your movie and enjoy!
-*__OR__*
-1. Run setup.exe and follow the instructions (coming soon)
+8. Install the dependencies, start the script, watch your movie and enjoy!
+
+# Dependencies
+- numpy
+- opencv-python
+- pyautogui
+- tkinter
+- pygubu
+- rgbxy
