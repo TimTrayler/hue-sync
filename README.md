@@ -6,16 +6,7 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 
 # WIP
 - Better tkinter-menu
-
-## Latest Features
-- Support for groups and zones
-- Auto Bridge IP
-
-## GUI (WIP)
-- Start Button
-- Stop Button
-- Current Color
-- (How long has it been on?)
+- Search Light and Group IDs
 
 # How to setup?
 1. [Follow these instructions](https://developers.meethue.com/develop/get-started-2/)
