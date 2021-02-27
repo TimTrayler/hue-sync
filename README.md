@@ -5,11 +5,17 @@
 Hue Sync takes a screenshot of your desktop every few seconds, gets the main color and changes the color of your lights!
 
 # WIP
+- Better tkinter-menu
 
 ## Latest Features
 - Support for groups and zones
 - Auto Bridge IP
 
+## GUI (WIP)
+- Start Button
+- Stop Button
+- Current Color
+- (How long has it been on?)
 
 # How to setup?
 1. [Follow these instructions](https://developers.meethue.com/develop/get-started-2/)
@@ -19,4 +25,12 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 5. Set ```user``` to your credentials
 6. Add the lamp ids to ```lamps```
 7. Change the additional settings like ```updatespermilliseconds``` to improve performance, make it smoother or something.
-8. Start the script, watch your movie and enjoy!
+8. Install the dependencies, start the script, watch your movie and enjoy!
+
+# Dependencies
+- numpy
+- opencv-python
+- pyautogui
+- tkinter
+- pygubu
+- rgbxy
