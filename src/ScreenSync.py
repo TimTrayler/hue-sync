@@ -1,7 +1,10 @@
+from threading import Thread
 import cv2.cv2 as cv2
 import numpy as np
 import pyautogui
 import requests
+import tkinter
+import pygubu
 import rgbxy
 import json
 import time
@@ -70,20 +73,63 @@ def get_main_color_on_screen():
     return tuple(rgb)
 
 
+class UiApp:
+    def __init__(self):
+        self.builder = builder = pygubu.Builder()
+        builder.add_resource_path(os.path.dirname(__file__))
+        builder.add_from_file(os.path.join(os.path.dirname(__file__), "ui.ui"))
+        self.mainwindow = builder.get_object('root')
+        builder.connect_callbacks(self)
+
+    def onStartButtonClick(self):
+        global run
+        run = True
+        self.builder.get_object("startButton")["state"] = "disable"
+        self.builder.get_object("stopButton")["state"] = "enable"
+
+    def onStopButtonClick(self):
+        global run
+        run = False
+        self.builder.get_object("startButton")["state"] = "enable"
+        self.builder.get_object("stopButton")["state"] = "disable"
+
+    def update_color(self, rgb):
+        self.builder.get_object("colorPreview")["bg"] = '#%02x%02x%02x' % rgb
+
+    def run(self):
+        self.mainwindow.mainloop()
+
+
 def main():
     while True:
-        try:
-            # Get Values
-            r, g, b = get_main_color_on_screen()
-            x, y = rgbxy.Converter().rgb_to_xy(r, g, b)
-            bri = min(CONFIG["maxbri"], int(abs(100 - (r + g + b))))
+        while run:
+            try:
+                # Get Values
+                r, g, b = get_main_color_on_screen()
+                x, y = rgbxy.Converter().rgb_to_xy(r, g, b)
+                bri = min(CONFIG["maxbri"], int(abs(100 - (r + g + b))))
 
-            set_all_xyb(x, y, bri, transtime=CONFIG["transitiontime"])
+                set_all_xyb(x, y, bri, transtime=CONFIG["transitiontime"])
+                app.update_color(tuple([min(255, v*3) for v in (r, g, b)]))
 
-            time.sleep(1000 / CONFIG["updatespermillisecond"])
-        except Exception as ex:
-            print(ex)
+                time.sleep(1000 / CONFIG["updatespermillisecond"])
+            except Exception as ex:
+                print(ex)
 
 
 if __name__ == "__main__":
-    main()
+    run = False
+    Thread(target=main).start()
+
+    root = tkinter.Tk()
+
+    # Window
+    root.geometry(f"1100x110")
+    root.resizable(0, 0)
+    icon = tkinter.PhotoImage(file="icon.png")
+    # noinspection PyProtectedMember
+    root.tk.call('wm', 'iconphoto', root._w, icon)
+    root.title("Hue Sync")
+
+    app = UiApp()
+    app.run()
