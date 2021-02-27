@@ -12,6 +12,11 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 - Support for groups and zones
 - Auto Bridge IP
 
+## GUI (WIP)
+- Start Button
+- Stop Button
+- Current Color
+- (How long has it been on?)
 
 # How to setup?
 1. [Follow these instructions](https://developers.meethue.com/develop/get-started-2/)
