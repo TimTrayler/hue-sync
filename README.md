@@ -5,6 +5,8 @@
 Hue Sync takes a screenshot of your desktop every few seconds, gets the main color and changes the color of your lights!
 
 # WIP
+- tkinter-menu
+- Executable File (.exe)
 
 ## Latest Features
 - Support for groups and zones
