@@ -27,3 +27,5 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 6. Add the lamp ids to ```lamps```
 7. Change the additional settings like ```updatespermilliseconds``` to improve performance, make it smoother or something.
 8. Start the script, watch your movie and enjoy!
+*__OR__*
+1. Run setup.exe and follow the instructions (coming soon)
