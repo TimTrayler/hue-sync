@@ -110,11 +110,16 @@ def main():
                 bri = min(CONFIG["maxbri"], int(abs(100 - (r + g + b))))
 
                 set_all_xyb(x, y, bri, transtime=CONFIG["transitiontime"])
-                app.update_color(tuple([min(255, v*3) for v in (r, g, b)]))
+                app.update_color(tuple([min(255, v * 3) for v in (r, g, b)]))
 
                 time.sleep(1000 / CONFIG["updatespermillisecond"])
             except Exception as ex:
                 print(ex)
+
+
+def on_window_close():
+    root.destroy()
+    os._exit(0)
 
 
 if __name__ == "__main__":
@@ -130,6 +135,9 @@ if __name__ == "__main__":
     # noinspection PyProtectedMember
     root.tk.call('wm', 'iconphoto', root._w, icon)
     root.title("Hue Sync")
+
+    # Exit on tkinter exit
+    root.protocol("WM_DELETE_WINDOW", on_window_close)
 
     app = UiApp()
     app.run()
