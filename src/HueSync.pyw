@@ -71,6 +71,36 @@ def set_all_xyb(x, y, bri, transtime=0) -> list[requests.models.Response]:
     return res
 
 
+def set_state(lamp: str, state: bool):
+    return requests.put(f"{lURL}{lamp}/state", json={"on": state})
+
+
+def set_all_states(state: bool):
+    result: list[requests.models.Response] = []
+    for lamp in sync_lamps:
+        result.append(set_state(lamp, state))
+    return result
+
+
+def get_state_list():
+    res = {}
+    for l in sync_lamps:
+        state = requests.get(f"{lURL}{l}/").json()["state"]
+        res[l] = {
+            "on": state["on"],
+            "x": state["xy"][0],
+            "y": state["xy"][1],
+            "bri": state["bri"]
+        }
+    return res
+
+
+def apply_state_list(l: dict, transtime=10):
+    for k in l.keys():
+        set_xyb(k, l[k]["x"], l[k]["y"], l[k]["bri"], transtime=transtime)
+        set_state(k, l[k]["on"])
+
+
 def set_xyb(lamp: str, x, y, bri, transtime=0) -> requests.models.Response:
     return requests.put(f"{lURL}{lamp}/state/", json={"xy": [x, y], "bri": bri, "transitiontime": transtime})
 
@@ -98,6 +128,9 @@ def get_main_color_on_screen():
 
 
 class UiApp:
+
+    oState = {}
+
     def __init__(self):
         self.builder = builder = pygubu.Builder()
         builder.add_resource_path(os.path.dirname(__file__))
@@ -108,12 +141,15 @@ class UiApp:
     def onStartButtonClick(self):
         global run
         run = True
+        self.oState = get_state_list()
+        set_all_states(True)
         self.builder.get_object("startButton")["state"] = "disable"
         self.builder.get_object("stopButton")["state"] = "enable"
 
     def onStopButtonClick(self):
         global run
         run = False
+        apply_state_list(self.oState)
         self.builder.get_object("startButton")["state"] = "enable"
         self.builder.get_object("stopButton")["state"] = "disable"
 
