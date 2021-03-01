@@ -11,19 +11,43 @@ import time
 import os
 
 
+class LinkButtonNotPressed(Exception):
+    pass
+
+
 def get_bridge_ip(number=0):
     return requests.get("https://discovery.meethue.com/").json()[number]["internalipaddress"]
 
 
-if os.path.isfile("testconfig.json"):
-    CONFIG = json.loads(open("testconfig.json", "r").read())
-else:
-    CONFIG = json.loads(open("config.json", "r").read())
+cfile = "testconfig.json" if os.path.isfile("testconfig.json") else "config.json"
+
+CONFIG = json.loads(open(cfile, "r").read())
 
 if CONFIG["adress"].lower() == "auto":
     adress = get_bridge_ip(CONFIG["bridge_number"])
 else:
     adress = CONFIG["adress"]
+
+if CONFIG["user"].lower() == "create":
+    r = requests.post(f"http://{adress}/api/", json={"devicetype": "huesync"})
+    if 199 < r.status_code < 300:
+        j = r.json()[0]
+        try:
+            if j["error"]["type"] == 101:
+                raise LinkButtonNotPressed("Please press the big link button on your bridge 30s before you run this "
+                                           + "script!")
+        except (KeyError, IndexError):
+            try:
+                u = j["success"]["username"]
+                CONFIG["user"] = u
+
+                open(cfile, "w").write(json.dumps(CONFIG))
+
+                print(f"Successfully created a user! [{u}]")
+            except (KeyError, IndexError):
+                print("Please try again! [User Creation Exception]")
+                exit()
+
 username = CONFIG["user"]
 baseURL = f"http://{adress}/api/{username}/"
 lURL = f"{baseURL}lights/"
