@@ -5,6 +5,7 @@ import pyautogui
 import requests
 import tkinter
 import pygubu
+import atexit
 import rgbxy
 import json
 import time
@@ -177,7 +178,13 @@ def main():
                 print(ex)
 
 
+def on_exit():
+    app.onStopButtonClick()
+    root.destroy()
+
+
 def on_window_close():
+    app.onStopButtonClick()
     root.destroy()
     os._exit(0)
 
@@ -198,6 +205,7 @@ if __name__ == "__main__":
 
     # Exit on tkinter exit
     root.protocol("WM_DELETE_WINDOW", on_window_close)
+    atexit.register(on_exit)
 
     app = UiApp()
     app.run()
