@@ -28,9 +28,10 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 8. Install the dependencies, start the script, watch your movie and enjoy!
 
 # Dependencies
-- numpy
 - opencv-python
 - pyautogui
+- requests
 - tkinter
 - pygubu
 - rgbxy
+- numpy
