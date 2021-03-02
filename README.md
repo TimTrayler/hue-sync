@@ -8,8 +8,8 @@
 Hue Sync takes a screenshot of your desktop every few seconds, gets the main color and changes the color of your lights!
 
 # WIP
-- Better tkinter-menu
 - Search Light and Group IDs
+- Darkmode
 
 # How to setup (simple)
 1. Press the Link button on your Hue Bridge
