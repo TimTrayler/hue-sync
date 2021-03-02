@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <interface version="1.1">
-  <object class="ttk.Frame" id="frame">
+  <object class="ttk.Frame" id="root">
     <property name="width">300</property>
     <layout manager="grid">
       <property name="column">0</property>

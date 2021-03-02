@@ -29,6 +29,7 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 
 # Dependencies
 - opencv-python
+- darkdetect
 - pyautogui
 - requests
 - tkinter

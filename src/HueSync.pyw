@@ -1,6 +1,7 @@
 from threading import Thread
 import cv2.cv2 as cv2
 import numpy as np
+import darkdetect
 import pyautogui
 import requests
 import tkinter
@@ -146,7 +147,7 @@ class UiApp:
         self.builder = builder = pygubu.Builder()
         builder.add_resource_path(os.path.dirname(__file__))
         builder.add_from_file(os.path.join(os.path.dirname(__file__), "ui.ui"))
-        self.mainwindow = builder.get_object('frame')
+        self.mainwindow = builder.get_object('root')
         builder.connect_callbacks(self)
 
     def onStartButtonClick(self):
