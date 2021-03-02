@@ -35,4 +35,3 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 - pygubu
 - rgbxy
 - numpy
-- winshell (only if on windows)
