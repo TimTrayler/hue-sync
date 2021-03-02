@@ -24,6 +24,7 @@ cfile = "testconfig.json" if os.path.isfile("testconfig.json") else "config.json
 
 CONFIG = json.loads(open(cfile, "r").read())
 
+
 if CONFIG["adress"].lower() == "auto":
     adress = get_bridge_ip(CONFIG["bridge_number"])
 else:
@@ -128,19 +129,29 @@ def get_main_color_on_screen():
     return tuple(rgb)
 
 
+def get_complementary(color):
+    color = color[1:]
+    color = int(color, 16)
+    comp_color = 0xFFFFFF ^ color
+    comp_color = "#%06X" % comp_color
+    return comp_color
+
+
 class UiApp:
 
     oState = {}
+    oBgColor = "SystemButtonFace"
 
     def __init__(self):
         self.builder = builder = pygubu.Builder()
         builder.add_resource_path(os.path.dirname(__file__))
         builder.add_from_file(os.path.join(os.path.dirname(__file__), "ui.ui"))
-        self.mainwindow = builder.get_object('root')
+        self.mainwindow = builder.get_object('frame')
         builder.connect_callbacks(self)
 
     def onStartButtonClick(self):
         global run
+        self.oBgColor = self.builder.get_object("colorPreview")["bg"]
         run = True
         self.oState = get_state_list()
         set_all_states(True)
@@ -151,11 +162,13 @@ class UiApp:
         global run
         run = False
         apply_state_list(self.oState)
+        self.builder.get_object("colorPreview")["bg"] = self.oBgColor
         self.builder.get_object("startButton")["state"] = "enable"
         self.builder.get_object("stopButton")["state"] = "disable"
 
     def update_color(self, rgb):
-        self.builder.get_object("colorPreview")["bg"] = '#%02x%02x%02x' % rgb
+        global run
+        self.builder.get_object("colorPreview")["bg"] = self.oBgColor if not run else '#%02x%02x%02x' % rgb
 
     def run(self):
         self.mainwindow.mainloop()
@@ -196,11 +209,9 @@ if __name__ == "__main__":
     root = tkinter.Tk()
 
     # Window
-    root.geometry(f"1100x110")
+    # root.geometry(f"1100x110")
     root.resizable(0, 0)
-    icon = tkinter.PhotoImage(file="icon.png")
-    # noinspection PyProtectedMember
-    root.tk.call('wm', 'iconphoto', root._w, icon)
+    root.iconbitmap(r"icon.ico")
     root.title("Hue Sync")
 
     # Exit on tkinter exit

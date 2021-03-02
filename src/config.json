@@ -12,5 +12,7 @@
   ],
   "updatespermillisecond": 1000,
   "maxbri": 90,
-  "transitiontime": 5
+  "transitiontime": 5,
+  "createShortcut": false,
+  "_createShortcut": "Create a Startmenu entry? Windows only"
 }

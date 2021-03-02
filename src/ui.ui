@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <interface version="1.1">
-  <object class="ttk.Frame" id="root">
+  <object class="ttk.Frame" id="frame">
     <property name="width">300</property>
     <layout manager="grid">
       <property name="column">0</property>
@@ -17,8 +17,7 @@
           <property name="ipady">10</property>
           <property name="propagate">True</property>
           <property name="row">0</property>
-          <property name="sticky">w</property>
-          <property type="col" id="0" name="pad">0</property>
+          <property name="sticky">nw</property>
         </layout>
       </object>
     </child>
@@ -29,11 +28,11 @@
         <property name="state">disabled</property>
         <property name="text" translatable="yes">Stop</property>
         <layout manager="grid">
-          <property name="column">2</property>
+          <property name="column">0</property>
           <property name="ipady">10</property>
           <property name="propagate">True</property>
           <property name="row">0</property>
-          <property name="sticky">e</property>
+          <property name="sticky">ne</property>
         </layout>
       </object>
     </child>
@@ -41,21 +40,13 @@
       <object class="tk.Canvas" id="colorPreview">
         <property name="height">20</property>
         <layout manager="grid">
-          <property name="column">1</property>
-          <property name="ipady">10</property>
-          <property name="propagate">True</property>
-          <property name="row">1</property>
-          <property name="sticky">e</property>
-        </layout>
-      </object>
-    </child>
-    <child>
-      <object class="tk.Label" id="colorPreviewLabel">
-        <property name="text" translatable="yes">Current Color:</property>
-        <layout manager="grid">
           <property name="column">0</property>
+          <property name="ipadx">30</property>
+          <property name="ipady">15</property>
           <property name="propagate">True</property>
           <property name="row">1</property>
+          <property name="sticky">s</property>
+          <property type="row" id="1" name="pad">0</property>
         </layout>
       </object>
     </child>
@@ -64,9 +55,12 @@
         <property name="text" translatable="yes">Hue Sync
 by Tim Trayler</property>
         <layout manager="grid">
-          <property name="column">1</property>
+          <property name="column">0</property>
+          <property name="ipadx">115</property>
+          <property name="ipady">5</property>
           <property name="propagate">True</property>
           <property name="row">0</property>
+          <property name="sticky">n</property>
         </layout>
       </object>
     </child>
