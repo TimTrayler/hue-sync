@@ -12,9 +12,9 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 - Darkmode
 
 # How to setup (simple)
-1. Press the Link button on your Hue Bridge
-2. Run the script in the next 30s
-3. Open ```src/config.json``` and add the lamps and groups to the ```lamps``` and ```groups``` lists.
+1. Open ```src/config.json``` and add the lamps and groups to the ```lamps``` and ```groups``` lists.
+2. Press the Link button on your Hue Bridge
+3. Run the script in the next 30s
 4. Done!
 
 # How to setup (advanced)?
