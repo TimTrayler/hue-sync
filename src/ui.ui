@@ -10,6 +10,7 @@
     </layout>
     <child>
       <object class="tk.Button" id="startButton">
+        <property name="command" type="command" cbtype="simple">onStartButtonClick</property>
         <property name="text" translatable="yes">Start</property>
         <layout manager="grid">
           <property name="column">0</property>
@@ -23,6 +24,7 @@
     </child>
     <child>
       <object class="tk.Button" id="stopButton">
+        <property name="command" type="command" cbtype="simple">onStopButtonClick</property>
         <property name="justify">left</property>
         <property name="relief">raised</property>
         <property name="text" translatable="yes">Stop</property>
@@ -53,9 +55,10 @@ by Tim Trayler</property>
         <property name="width">300</property>
         <layout manager="grid">
           <property name="column">0</property>
+          <property name="ipadx">80</property>
+          <property name="ipady">10</property>
           <property name="propagate">True</property>
           <property name="row">1</property>
-          <property name="sticky">w</property>
         </layout>
       </object>
     </child>
