@@ -122,8 +122,7 @@ def get_main_color_on_screen():
     data = np.float32(data)
 
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
-    flags = cv2.KMEANS_RANDOM_CENTERS
-    compactness, labels, centers = cv2.kmeans(data, 1, None, criteria, 10, flags)
+    compactness, labels, centers = cv2.kmeans(data, 1, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
 
     rgb = bgr_to_rgb(centers[0].astype(np.int32))
 
@@ -131,7 +130,8 @@ def get_main_color_on_screen():
 
 
 def get_complementary(color):
-    color = color[1:]
+    if color.startswith("#"):
+        color = color[1:]
     color = int(color, 16)
     comp_color = 0xFFFFFF ^ color
     comp_color = "#%06X" % comp_color
