@@ -192,12 +192,19 @@ def main():
                 print(ex)
 
 
+def start_exiter():
+    time.sleep(5)
+    os._exit(0)
+
+
 def on_exit():
+    Thread(target=start_exiter).run()
     app.onStopButtonClick()
     root.destroy()
 
 
 def on_window_close():
+    Thread(target=start_exiter).run()
     app.onStopButtonClick()
     root.destroy()
     os._exit(0)
