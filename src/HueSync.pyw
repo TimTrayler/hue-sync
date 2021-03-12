@@ -130,7 +130,8 @@ def get_main_color_on_screen():
 
 
 def get_complementary(color):
-    color = color[1:]
+    if color.startswith("#"):
+        color = color[1:]
     color = int(color, 16)
     comp_color = 0xFFFFFF ^ color
     comp_color = "#%06X" % comp_color
