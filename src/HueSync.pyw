@@ -157,14 +157,14 @@ class UiApp:
         self.oState = get_state_list()
         set_all_states(True)
         self.builder.get_object("startButton")["state"] = "disable"
-        self.builder.get_object("stopButton")["state"] = "enable"
+        self.builder.get_object("stopButton")["state"] = "active"
 
     def onStopButtonClick(self):
         global run
         run = False
         apply_state_list(self.oState)
         self.builder.get_object("colorPreview")["bg"] = self.oBgColor
-        self.builder.get_object("startButton")["state"] = "enable"
+        self.builder.get_object("startButton")["state"] = "active"
         self.builder.get_object("stopButton")["state"] = "disable"
 
     def update_color(self, rgb):
@@ -198,13 +198,13 @@ def start_exiter():
 
 
 def on_exit():
-    Thread(target=start_exiter).run()
+    Thread(target=start_exiter).start()
     app.onStopButtonClick()
     root.destroy()
 
 
 def on_window_close():
-    Thread(target=start_exiter).run()
+    Thread(target=start_exiter).start()
     app.onStopButtonClick()
     root.destroy()
     os._exit(0)
@@ -217,7 +217,6 @@ if __name__ == "__main__":
     root = tkinter.Tk()
 
     # Window
-    # root.geometry(f"1100x110")
     root.resizable(0, 0)
     root.iconbitmap(r"icon.ico")
     root.title("Hue Sync")
