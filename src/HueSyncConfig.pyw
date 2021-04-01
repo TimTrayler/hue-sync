@@ -57,7 +57,7 @@ class App:
             CONFIG["lamps"] = [x.strip() for x in str(self.builder.get_object("lamps").get("1.0", END)).split(";") if len(x) > 0]
             CONFIG["groups"] = [x.strip() for x in str(self.builder.get_object("groups").get("1.0", END)).split(";") if len(x) > 0]
 
-            open(cfile, "w").write(json.dumps(CONFIG))
+            open(cfile, "w").write(json.dumps(CONFIG, indent=4, sort_keys=True))
             print("Finished saving config!")
         except:
             messagebox.showerror("Error", "Something unexpected went wrong whilst saving, please try again!")

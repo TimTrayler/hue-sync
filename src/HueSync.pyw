@@ -1,7 +1,6 @@
 from threading import Thread
 import cv2.cv2 as cv2
 import numpy as np
-import darkdetect
 import pyautogui
 import requests
 import tkinter
