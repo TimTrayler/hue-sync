@@ -12,5 +12,6 @@
   ],
   "updatespermillisecond": 1000,
   "maxbri": 90,
-  "transitiontime": 5
+  "transitiontime": 5,
+  "blackval": 10
 }

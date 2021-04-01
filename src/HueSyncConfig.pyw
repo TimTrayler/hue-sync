@@ -39,6 +39,7 @@ class App:
             self.builder.get_object("groups").delete("1.0", "99999.0")
             self.builder.get_object("groups").insert("1.0", ';'.join(CONFIG["groups"]))
             self.builder.get_object("maxbri").set(CONFIG["maxbri"] or 90)
+            self.builder.get_object("blackval").set(CONFIG["blackval"] or 10)
             set_tkinter_text(self.builder.get_object("transtime"), CONFIG["transitiontime"] or 10)
             set_tkinter_text(self.builder.get_object("upms"), CONFIG["updatespermillisecond"] or 1000)
             print("Finished loading config!")
@@ -52,6 +53,7 @@ class App:
             CONFIG["adress"] = self.builder.get_object("addrin").get()
             CONFIG["user"] = self.builder.get_object("usr").get()
             CONFIG["maxbri"] = self.builder.get_object("maxbri").get()
+            CONFIG["blackval"] = self.builder.get_object("blackval").get()
             CONFIG["transitiontime"] = int(self.builder.get_object("transtime").get())
             CONFIG["updatespermillisecond"] = int(self.builder.get_object("upms").get())
             CONFIG["lamps"] = [x.strip() for x in str(self.builder.get_object("lamps").get("1.0", END)).split(";") if len(x) > 0]

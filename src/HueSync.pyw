@@ -53,6 +53,7 @@ if CONFIG["user"].lower() == "create":
 username = CONFIG["user"]
 baseURL = f"http://{adress}/api/{username}/"
 lURL = f"{baseURL}lights/"
+blackvalue = CONFIG["blackval"]
 
 sync_lamps = CONFIG["lamps"]
 
@@ -182,6 +183,11 @@ def main():
                 r, g, b = get_main_color_on_screen()
                 x, y = rgbxy.Converter().rgb_to_xy(r, g, b)
                 bri = min(CONFIG["maxbri"], int(abs(100 - (r + g + b))))
+
+                if r <= blackvalue and g <= blackvalue and b <= blackvalue:
+                    r, g, b = 0, 0, 0
+                    x, y = rgbxy.Converter().rgb_to_xy(r, g, b)
+                    bri = 0
 
                 set_all_xyb(x, y, bri, transtime=CONFIG["transitiontime"])
                 app.update_color(tuple([min(255, v * 3) for v in (r, g, b)]))

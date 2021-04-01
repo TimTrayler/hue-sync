@@ -35,7 +35,6 @@ by Tim Trayler</property>
     <child>
       <object class="tk.Entry" id="addrin">
         <property name="text" translatable="yes">auto</property>
-        <property name="textvariable">string:ipadress</property>
         <layout manager="grid">
           <property name="column">0</property>
           <property name="ipadx">47</property>
@@ -62,7 +61,6 @@ by Tim Trayler</property>
         <property name="justify">left</property>
         <property name="takefocus">false</property>
         <property name="text" translatable="yes">create</property>
-        <property name="textvariable">string:user</property>
         <property name="validate">none</property>
         <layout manager="grid">
           <property name="column">0</property>
@@ -146,7 +144,6 @@ by Tim Trayler</property>
         <property name="sliderlength">20</property>
         <property name="sliderrelief">raised</property>
         <property name="to">100</property>
-        <property name="variable">int:maxbri</property>
         <layout manager="grid">
           <property name="column">0</property>
           <property name="ipadx">47</property>
@@ -206,6 +203,37 @@ by Tim Trayler</property>
       </object>
     </child>
     <child>
+      <object class="tk.Label" id="blackvallabel">
+        <property name="text" translatable="yes">Black RGB Value:
+(when is a color black)</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="padx">10</property>
+          <property name="propagate">True</property>
+          <property name="row">15</property>
+          <property name="sticky">w</property>
+          <property type="row" id="9" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Scale" id="blackval">
+        <property name="from_">0</property>
+        <property name="orient">horizontal</property>
+        <property name="showvalue">true</property>
+        <property name="sliderlength">20</property>
+        <property name="sliderrelief">raised</property>
+        <property name="to">155</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">47</property>
+          <property name="propagate">True</property>
+          <property name="row">16</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
       <object class="tk.Button" id="savebtn">
         <property name="command" type="command" cbtype="simple">save</property>
         <property name="text" translatable="yes">Save</property>
@@ -214,8 +242,9 @@ by Tim Trayler</property>
           <property name="ipadx">20</property>
           <property name="ipady">5</property>
           <property name="propagate">True</property>
-          <property name="row">15</property>
+          <property name="row">17</property>
           <property type="row" id="15" name="pad">20</property>
+          <property type="row" id="17" name="pad">20</property>
         </layout>
       </object>
     </child>
