@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="tk.Frame" id="root">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="propagate">True</property>
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="tk.Label" id="title">
+        <property name="text" translatable="yes">Hue Sync Config
+by Tim Trayler</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">0</property>
+          <property name="sticky">n</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="addrlabel">
+        <property name="takefocus">false</property>
+        <property name="text" translatable="yes">Adress:</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+          <property name="sticky">w</property>
+          <property type="row" id="1" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Entry" id="addrin">
+        <property name="text" translatable="yes">auto</property>
+        <property name="textvariable">string:ipadress</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">47</property>
+          <property name="propagate">True</property>
+          <property name="row">2</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="usrlabel">
+        <property name="text" translatable="yes">User:</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">3</property>
+          <property name="sticky">w</property>
+          <property type="row" id="3" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Entry" id="usr">
+        <property name="justify">left</property>
+        <property name="takefocus">false</property>
+        <property name="text" translatable="yes">create</property>
+        <property name="textvariable">string:user</property>
+        <property name="validate">none</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">47</property>
+          <property name="propagate">True</property>
+          <property name="row">4</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="lampslabel">
+        <property name="relief">flat</property>
+        <property name="text" translatable="yes">Lamps (seperated by semicolons):</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">5</property>
+          <property name="sticky">w</property>
+          <property type="row" id="5" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="pygubu.builder.widgets.tkinterscrolledtext" id="lamps">
+        <property name="height">2</property>
+        <property name="text" translatable="yes">1;2;</property>
+        <property name="width">14</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">40</property>
+          <property name="propagate">True</property>
+          <property name="row">6</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="groupslabel">
+        <property name="cursor">arrow</property>
+        <property name="text" translatable="yes">Rooms (seperated by semicolons):</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">7</property>
+          <property name="sticky">w</property>
+          <property type="row" id="7" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="pygubu.builder.widgets.tkinterscrolledtext" id="groups">
+        <property name="height">2</property>
+        <property name="width">14</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">40</property>
+          <property name="propagate">True</property>
+          <property name="row">8</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="maxbrilabel">
+        <property name="text" translatable="yes">Maximum Brightness:</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">9</property>
+          <property name="sticky">w</property>
+          <property type="row" id="9" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Scale" id="maxbri">
+        <property name="from_">1</property>
+        <property name="orient">horizontal</property>
+        <property name="showvalue">true</property>
+        <property name="sliderlength">20</property>
+        <property name="sliderrelief">raised</property>
+        <property name="to">100</property>
+        <property name="variable">int:maxbri</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">47</property>
+          <property name="propagate">True</property>
+          <property name="row">10</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="transtimelabel">
+        <property name="text" translatable="yes">Transition Time (ms):</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">11</property>
+          <property name="sticky">w</property>
+          <property type="row" id="11" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Entry" id="transtime">
+        <property name="text" translatable="yes">10</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">47</property>
+          <property name="propagate">True</property>
+          <property name="row">12</property>
+          <property name="sticky">w</property>
+          <property type="row" id="12" name="pad">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Label" id="upmslabel">
+        <property name="text" translatable="yes">Updates per ms:</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="propagate">True</property>
+          <property name="row">13</property>
+          <property name="sticky">w</property>
+          <property type="row" id="13" name="pad">10</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Entry" id="upms">
+        <property name="text" translatable="yes">1000</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">47</property>
+          <property name="propagate">True</property>
+          <property name="row">14</property>
+          <property name="sticky">w</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="tk.Button" id="savebtn">
+        <property name="command" type="command" cbtype="simple">save</property>
+        <property name="text" translatable="yes">Save</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="ipadx">20</property>
+          <property name="ipady">5</property>
+          <property name="propagate">True</property>
+          <property name="row">15</property>
+          <property type="row" id="15" name="pad">20</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
