@@ -8,10 +8,10 @@
     "3"
   ], 
   "groups": [
-  
+    "1"
   ],
   "updatespermillisecond": 1000,
   "maxbri": 90,
   "transitiontime": 5,
-  "blackval": 10
+  "blackval": 50
 }
