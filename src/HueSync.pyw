@@ -1,3 +1,4 @@
+from tkinter import messagebox
 from threading import Thread
 import cv2.cv2 as cv2
 import numpy as np
@@ -22,6 +23,7 @@ def get_bridge_ip(number=0):
 
 cfile = "testconfig.json" if os.path.isfile("testconfig.json") else "config.json"
 
+VERSION = 3.2
 CONFIG = json.loads(open(cfile, "r").read())
 
 
@@ -215,7 +217,21 @@ def on_window_close():
     os._exit(0)
 
 
+def check_version():
+    try:
+        lrelease = requests.get("https://api.github.com/repos/timtrayler/hue-sync/releases/latest").json()
+        ltag = float(lrelease["tag_name"].replace("v", ""))
+
+        if ltag > VERSION:
+            messagebox.showinfo("New version avaible",
+                                "A newer version of hue sync is avaible, please visit https://github.com/TimTrayler/hue-sync/releases/latest to download the newest version.")
+    except:
+        print("Failed to check version!")
+
+
 if __name__ == "__main__":
+    check_version()
+
     run = False
     Thread(target=main).start()
 
