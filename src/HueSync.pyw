@@ -57,12 +57,13 @@ baseURL = f"http://{adress}/api/{username}/"
 lURL = f"{baseURL}lights/"
 blackvalue = CONFIG["blackval"]
 
-sync_lamps = CONFIG["lamps"]
+sync_lamps = [x for x in CONFIG["lamps"] if len(x) > 0]
 
 
 def add_lamps_in_room(room: str):
-    for lamp in requests.get(f"{baseURL}groups/{room}/").json()["lights"]:
-        sync_lamps.append(lamp)
+    if len(room) > 0:
+        for lamp in requests.get(f"{baseURL}groups/{room}/").json()["lights"]:
+            sync_lamps.append(lamp)
 
 
 for group in CONFIG["groups"]:
@@ -187,7 +188,7 @@ def main():
                 bri = min(CONFIG["maxbri"], int(abs(100 - (r + g + b))))
 
                 if r <= blackvalue and g <= blackvalue and b <= blackvalue:
-                    r, g, b = 0, 0, 0
+                    r, g, b = 1, 1, 1
                     x, y = rgbxy.Converter().rgb_to_xy(r, g, b)
                     bri = 0
 
@@ -195,7 +196,7 @@ def main():
                 app.update_color(tuple([min(255, v * 3) for v in (r, g, b)]))
 
                 time.sleep(1000 / CONFIG["updatespermillisecond"])
-            except Exception as ex:
+            except BlockingIOError as ex:
                 print(ex)
 
 
@@ -225,7 +226,7 @@ def check_version():
         if ltag > VERSION:
             messagebox.showinfo("New version avaible",
                                 "A newer version of hue sync is avaible, please visit https://github.com/TimTrayler/hue-sync/releases/latest to download the newest version.")
-    except:
+    except Exception:
         print("Failed to check version!")
 
 
