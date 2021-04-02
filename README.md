@@ -15,6 +15,7 @@ Hue Sync takes a screenshot of your desktop every few seconds, gets the main col
 - pyautogui
 - requests
 - tkinter
+- pillow
 - pygubu
 - rgbxy
 - numpy
