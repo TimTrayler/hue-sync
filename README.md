@@ -1,7 +1,7 @@
 # Hue Sync
 ## Sync your media with your Hue lights WITHOUT a Hue Sync Box!
 
-# [Download](https://github.com/TimTrayler/hue-sync/releases/download/latest/hue-sync.zip)
+# [Download](https://github.com/TimTrayler/hue-sync/releases/latest/download/hue-sync.zip)
 ## [v3.3](https://github.com/TimTrayler/hue-sync/releases/latest)
 
 # How does it work?
