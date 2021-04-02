@@ -23,7 +23,7 @@ def get_bridge_ip(number=0):
 
 cfile = "testconfig.json" if os.path.isfile("testconfig.json") else "config.json"
 
-VERSION = 3.2
+VERSION = 3.3
 CONFIG = json.loads(open(cfile, "r").read())
 
 
